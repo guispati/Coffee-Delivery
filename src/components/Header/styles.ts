@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.header`
+export const HeaderContainer = styled.nav`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin: 2rem 0;
+    padding: 2rem 0;
+    position: sticky;
+    top: 0;
+    background: ${props => props.theme['background']};
 
     div {
         display: flex;
