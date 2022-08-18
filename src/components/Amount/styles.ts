@@ -8,6 +8,7 @@ export const AmountContainer = styled.div`
     align-items: center;
     background: ${props => props.theme['base-button']};
     border-radius: 6px;
+    max-height: 2rem;
 
     button {
         background: transparent;
@@ -15,11 +16,12 @@ export const AmountContainer = styled.div`
         display: flex;
 
         svg {
-            fill: ${props => props.theme['purple']};
+            color: ${props => props.theme['purple']};
         }
 
-        &:hover {
+        &:hover svg {
             cursor: pointer;
+            color: ${props => props.theme['purple-dark']};
         }
     }
 
@@ -35,7 +37,6 @@ export const AmountContainer = styled.div`
         font-family: 'Roboto';
         font-weight: 400;
         font-size: 1rem;
-        line-height: 130%;
         text-align: center;
         color: ${props => props.theme['base-title']};
 

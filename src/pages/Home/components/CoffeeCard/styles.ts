@@ -86,7 +86,7 @@ export const PurchaseIcon = styled.button`
     justify-content: space-between;
     align-items: center;
     border: 0;
-    padding: 0.4rem;
+    padding: 0.25rem;
 
     background: ${props => props.theme['purple-dark']};
     border-radius: 6px;

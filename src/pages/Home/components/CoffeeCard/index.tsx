@@ -2,7 +2,7 @@ import { CoffeeCardContainer, FiltersContainer, PriceContainer, PurchaseIcon } f
 import { Coffee } from "../../../../data/coffeeList";
 import { Amount } from "../../../../components/Amount";
 import { ShoppingCart } from "phosphor-react";
-import { FormattedNumber, FormattedNumberParts, IntlProvider } from "react-intl"
+import { FormattedNumberParts, IntlProvider } from "react-intl"
 
 interface CoffeeCardProps {
     product: Coffee;
