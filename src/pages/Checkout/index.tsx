@@ -6,13 +6,15 @@ import * as zod from 'zod';
 import { AddressForm } from "./components/AddressForm";
 import { PaymentForm } from "./components/PaymentForm";
 import { Product } from "./components/Product";
-import { Coffee, coffeeList } from "../../data/coffeeList";
 import { FormattedNumber, IntlProvider } from "react-intl";
+import { ItemList, PurchaseListContext } from "../../contexts/PurchaseListContext";
+import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const newOrderFormValidationSchema = zod.object({
     zipcode: zod.string().length(9),
     street: zod.string(),
-    number: zod.number(),
+    number: zod.string(),
     extra: zod.string().optional(),
     district: zod.string(),
     city: zod.string(),
@@ -20,14 +22,17 @@ const newOrderFormValidationSchema = zod.object({
     payment: zod.string(),
 });
 
-type NewOrderFormData = zod.infer<typeof newOrderFormValidationSchema>
+export type NewOrderFormData = zod.infer<typeof newOrderFormValidationSchema>
 
 export function Checkout() {
+    const { cart, clearCart } = useContext(PurchaseListContext);
+
     const newOrderForm = useForm<NewOrderFormData>({
         resolver: zodResolver(newOrderFormValidationSchema),
         defaultValues: {
             zipcode: '',
             street: '',
+            number: '',
             extra: '',
             district: '',
             city: '',
@@ -36,11 +41,12 @@ export function Checkout() {
         }
     });
 
-    const { handleSubmit, watch, reset, setValue, register } = newOrderForm;
+    const { handleSubmit, watch, setValue } = newOrderForm;
 
+    const navigate = useNavigate();
     function handleCreateNewOrder(data: NewOrderFormData) {
-        console.log(data);
-        reset();
+        clearCart();
+        navigate('/purchase-order', {state: data});
     }
 
     function searchCep(zipcode: string) {
@@ -53,12 +59,10 @@ export function Checkout() {
         });
     }
 
-    const purchaseList: Coffee[] = coffeeList.filter(product =>
-        product.id === 1 || product.id === 6
-    );
+    const purchaseList: ItemList[] = cart;
     
     const totalCart = purchaseList.reduce((prev, current) => {
-        return prev + +current.price;
+        return prev + +(current.product.price * current.quantity);
     }, 0);
 
     const carrierValue = 3.50;
@@ -108,15 +112,15 @@ export function Checkout() {
                     <div>
                         <h2>Cafés selecionados</h2>
                         <ListContainer>
-                            {purchaseList.map(product => (
-                                <Product product={product} />
+                            {purchaseList.map(item => (
+                                <Product key={item.product.id} product={item.product} quantity={item.quantity} />
                             ))}
                             <FinalPriceContainer>
                                 <FinalPriceRow>
                                     <label>Total de Itens</label>
                                     
                                     <span>
-                                        <IntlProvider locale="br">
+                                        <IntlProvider locale="pt-br">
                                             <FormattedNumber value={totalCart} style="currency" currency="BRL" />
                                         </IntlProvider>
                                     </span>
@@ -124,7 +128,7 @@ export function Checkout() {
                                 <FinalPriceRow>
                                     <label>Entrega</label>
                                     <span>
-                                        <IntlProvider locale="br">
+                                        <IntlProvider locale="pt-br">
                                             <FormattedNumber value={carrierValue} style="currency" currency="BRL" />
                                         </IntlProvider>
                                     </span>
@@ -132,7 +136,7 @@ export function Checkout() {
                                 <FinalPriceRowStrong>
                                     <label>Total</label>
                                     <span>
-                                        <IntlProvider locale="br">
+                                        <IntlProvider locale="pt-br">
                                             <FormattedNumber value={totalValue} style="currency" currency="BRL" />
                                         </IntlProvider>
                                     </span>

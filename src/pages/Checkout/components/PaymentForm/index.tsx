@@ -12,12 +12,12 @@ export function PaymentForm() {
                 <CreditCard size={16} />
                 <span>Cartão de Crédito</span>
             </label>
-            <input id="debitCard" {...register('payment')} type="radio" value="Cartão de Débito" />
+            <input id="debitCard" {...register('payment')} type="radio" value="2" />
             <label htmlFor="debitCard">
                 <Bank size={16} />
                 <span>Cartão de Débito</span>
             </label>
-            <input id="money" {...register('payment')} type="radio" value="Dinheiro" />
+            <input id="money" {...register('payment')} type="radio" value="2" />
             <label htmlFor="money">
                 <Money size={16} />
                 <span>Dinheiro</span>

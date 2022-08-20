@@ -28,6 +28,11 @@ export const FormContainer = styled.div`
         &#state {
             width: 10%;
         }
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+        }
     }
 `;
 
