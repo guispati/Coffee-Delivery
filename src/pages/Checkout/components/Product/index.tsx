@@ -6,11 +6,15 @@ import { ItemList, PurchaseListContext } from "../../../../contexts/PurchaseList
 import { DateContainer } from "../../../../components/DateContainer";
 
 export function Product({product, quantity}: ItemList) {
-    const { changeQuantityOnCart } = useContext(PurchaseListContext);
+    const { changeQuantityOnCart, removeItemFromCart } = useContext(PurchaseListContext);
     const [ productPrice, setProductPrice ] = useState(product.price*quantity);
 
     const handleChangeQuantity = (qtd: number) => {
         changeQuantityOnCart(product, qtd);
+    }
+
+    const handleDelete = () => {
+        removeItemFromCart(product);
     }
 
     useEffect(() => {
@@ -25,7 +29,7 @@ export function Product({product, quantity}: ItemList) {
                 <h3>{product.name}</h3>
                 <ActionsContainer>
                     <Amount quantity={quantity} changeQuantity={handleChangeQuantity} />
-                    <DeleteIcon>
+                    <DeleteIcon type="button" onClick={handleDelete}>
                         <Trash size={16} />
                         <span>Remover</span>
                     </DeleteIcon>

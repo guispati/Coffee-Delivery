@@ -6,9 +6,8 @@ import * as zod from 'zod';
 import { AddressForm } from "./components/AddressForm";
 import { PaymentForm } from "./components/PaymentForm";
 import { Product } from "./components/Product";
-import { FormattedNumber, IntlProvider } from "react-intl";
 import { ItemList, PurchaseListContext } from "../../contexts/PurchaseListContext";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { DateContainer } from "../../components/DateContainer";
 
@@ -72,6 +71,10 @@ export function Checkout() {
 
     const zipcode = watch('zipcode');
     zipcode.length === 9 && searchCep(zipcode);
+
+    useEffect(() => {
+        !cart.length && navigate("/");
+    }, [cart]);
     
     return (
         <CheckoutContainer>
