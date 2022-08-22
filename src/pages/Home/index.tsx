@@ -16,7 +16,7 @@ export function Home() {
                     <ShopInfo />
                 </div>
                 
-                <img src={image} />
+                <img src={image} alt="" />
             </HeaderContainer>
 
             <CoffeListContainer>

@@ -1,27 +1,50 @@
 import styled from "styled-components";
+import { devices } from '../../styles/themes/default';
 
 export const CheckoutContainer = styled.main`
     margin-top: 2.5rem;
 
     form {
         display: flex;
-        justify-content: space-between;
         gap: 2rem;
+        
+        @media ${devices.mobileS} {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media ${devices.laptop} {
+            flex-wrap: nowrap;
+            justify-content: space-between;
+        }
 
         fieldset {
             border: 0;
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
-            width: 60%
+
+            @media ${devices.mobileS} {
+                width: 100%;
+            }
+
+            @media ${devices.laptop} {
+                width: 60%;
+            }
         }
 
         > div {
-            width: 40%;
-
             display: flex;
             flex-direction: column;
             gap: 0.75rem;
+
+            @media ${devices.mobileS} {
+                width: 100%;
+            }
+
+            @media ${devices.laptop} {
+                width: 40%;
+            }
         }
 
         h2 {

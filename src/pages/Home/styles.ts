@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from '../../styles/themes/default';
 
 export const HomeContainer = styled.main`
     display: flex;
@@ -8,15 +9,29 @@ export const HomeContainer = styled.main`
 export const HeaderContainer = styled.header`
     margin: 5.75rem 0;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 3.5rem;
+
+    @media ${devices.mobileS} {
+        flex-wrap: wrap-reverse;
+        justify-content: center;
+    }
+
+    @media ${devices.laptop} {
+        flex-wrap: nowrap;
+        justify-content: space-between;
+    }
 
     > div {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         gap: 4.125rem;
+    }
+
+    > img {
+        max-width: 100%;
+        height: auto;
     }
 `;
 
@@ -59,9 +74,24 @@ export const CoffeListContainer = styled.section`
 
     > div {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr;
         column-gap: 2rem;
         row-gap: 2.5rem;
         flex-wrap: wrap;
+
+        @media ${devices.mobileS} {
+            grid-template-columns: 1fr;
+        }
+
+        @media ${devices.tablet} {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media ${devices.laptop} {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @media ${devices.laptopL} {
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+        }
     }
 `;

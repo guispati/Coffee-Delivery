@@ -2,9 +2,9 @@ import { CoffeeCardContainer, FiltersContainer, PriceContainer, PurchaseIcon } f
 import { Coffee } from "../../../../data/coffeeList";
 import { Amount } from "../../../../components/Amount";
 import { ShoppingCart } from "phosphor-react";
-import { FormattedNumberParts, IntlProvider } from "react-intl";
 import { PurchaseListContext } from "../../../../contexts/PurchaseListContext";
 import { useContext, useState } from "react";
+import { DateContainer } from "../../../../components/DateContainer";
 
 interface CoffeeCardProps {
     product: Coffee;
@@ -20,7 +20,6 @@ export function CoffeeCard({product}: CoffeeCardProps) {
     }
 
     function handleAddItemToCart() {
-        // console.log(product);
         addItemToCart(product, quantity);
     }
 
@@ -36,17 +35,7 @@ export function CoffeeCard({product}: CoffeeCardProps) {
             <h4>{product.description}</h4>
             
             <PriceContainer>
-                <IntlProvider locale="pt-br">
-                    <FormattedNumberParts value={product.price} style="currency" currency="BRL">
-                        {parts => (
-                            <span>
-                                {parts[0].value}
-                                {parts[1].value}
-                                <strong>{parts[2].value}{parts[3].value}{parts[4].value} </strong>
-                            </span>
-                        )}
-                    </FormattedNumberParts>
-                </IntlProvider>
+                <DateContainer formatType="styled" price={product.price} />
                 <Amount quantity={quantity} changeQuantity={handleChangeQuantity} />
                 <PurchaseIcon onClick={handleAddItemToCart} type="button">
                     <ShoppingCart size={22} weight="fill" />

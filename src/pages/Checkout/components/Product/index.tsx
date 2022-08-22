@@ -1,9 +1,9 @@
-import { DeleteIcon, InfoContainer, ActionsContainer, ProductContainer, PriceContainer } from "./styles";
-import { FormattedNumber, IntlProvider } from "react-intl";
+import { DeleteIcon, InfoContainer, ActionsContainer, ProductContainer } from "./styles";
 import { Amount } from "../../../../components/Amount";
 import { Trash } from "phosphor-react";
 import { useContext, useEffect, useState } from "react";
 import { ItemList, PurchaseListContext } from "../../../../contexts/PurchaseListContext";
+import { DateContainer } from "../../../../components/DateContainer";
 
 export function Product({product, quantity}: ItemList) {
     const { changeQuantityOnCart } = useContext(PurchaseListContext);
@@ -12,8 +12,6 @@ export function Product({product, quantity}: ItemList) {
     const handleChangeQuantity = (qtd: number) => {
         changeQuantityOnCart(product, qtd);
     }
-
-    // let productPrice = product.price;
 
     useEffect(() => {
         setProductPrice(product.price * quantity);
@@ -34,11 +32,7 @@ export function Product({product, quantity}: ItemList) {
                 </ActionsContainer>
             </InfoContainer>
 
-            <PriceContainer>
-                <IntlProvider locale="pt-br">
-                    <FormattedNumber value={productPrice} style="currency" currency="BRL" />
-                </IntlProvider>
-            </PriceContainer>
+            <strong><DateContainer price={productPrice} formatType="basic" /></strong>
             
         </ProductContainer>
     );

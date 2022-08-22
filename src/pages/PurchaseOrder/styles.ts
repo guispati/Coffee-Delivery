@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { devices } from '../../styles/themes/default';
 
 export const PurchaseOrderContainer = styled.main`
     margin-top: 5rem;
@@ -25,9 +26,23 @@ export const PurchaseOrderContainer = styled.main`
 
     section {
         display: flex;
-        justify-content: space-between;
-        flex-wrap: nowrap;
-        gap: 6.375rem;
+
+        @media ${devices.mobileS} {
+            flex-wrap: wrap-reverse;
+            gap: 3rem;
+            justify-content: center;
+        }
+
+        @media ${devices.laptop} {
+            flex-wrap: nowrap;
+            gap: 6.375rem;
+            justify-content: space-between;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
     }
 `;
 

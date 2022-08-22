@@ -1,5 +1,4 @@
 import { Minus, Plus } from "phosphor-react";
-import { useState } from "react";
 import { AmountContainer } from "./styles";
 
 interface AmountProps {

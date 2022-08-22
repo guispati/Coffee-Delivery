@@ -10,6 +10,7 @@ import { FormattedNumber, IntlProvider } from "react-intl";
 import { ItemList, PurchaseListContext } from "../../contexts/PurchaseListContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { DateContainer } from "../../components/DateContainer";
 
 const newOrderFormValidationSchema = zod.object({
     zipcode: zod.string().length(9),
@@ -69,14 +70,6 @@ export function Checkout() {
 
     const totalValue = totalCart + carrierValue;
 
-    // zipcode: data.cep,
-    // street: data.logradouro,
-    // number: 1,
-    // extra: data.complemento,
-    // district: data.bairro,
-    // city: data.localidade,
-    // state: data.uf
-
     const zipcode = watch('zipcode');
     zipcode.length === 9 && searchCep(zipcode);
     
@@ -118,27 +111,20 @@ export function Checkout() {
                             <FinalPriceContainer>
                                 <FinalPriceRow>
                                     <label>Total de Itens</label>
-                                    
                                     <span>
-                                        <IntlProvider locale="pt-br">
-                                            <FormattedNumber value={totalCart} style="currency" currency="BRL" />
-                                        </IntlProvider>
+                                        <DateContainer formatType="basic" price={totalCart} />
                                     </span>
                                 </FinalPriceRow>
                                 <FinalPriceRow>
                                     <label>Entrega</label>
                                     <span>
-                                        <IntlProvider locale="pt-br">
-                                            <FormattedNumber value={carrierValue} style="currency" currency="BRL" />
-                                        </IntlProvider>
+                                        <DateContainer formatType="basic" price={carrierValue} />
                                     </span>
                                 </FinalPriceRow>
                                 <FinalPriceRowStrong>
                                     <label>Total</label>
                                     <span>
-                                        <IntlProvider locale="pt-br">
-                                            <FormattedNumber value={totalValue} style="currency" currency="BRL" />
-                                        </IntlProvider>
+                                        <DateContainer formatType="basic" price={totalValue} />
                                     </span>
                                 </FinalPriceRowStrong>
                             </FinalPriceContainer>
@@ -147,8 +133,6 @@ export function Checkout() {
                                 Confirmar Pedido
                             </FinishOrderButton>
                         </ListContainer>
-
-
                     </div>
                 </form>
             </FormProvider>

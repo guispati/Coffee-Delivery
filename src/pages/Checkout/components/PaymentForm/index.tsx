@@ -17,7 +17,7 @@ export function PaymentForm() {
                 <Bank size={16} />
                 <span>Cartão de Débito</span>
             </label>
-            <input id="money" {...register('payment')} type="radio" value="2" />
+            <input id="money" {...register('payment')} type="radio" value="3" />
             <label htmlFor="money">
                 <Money size={16} />
                 <span>Dinheiro</span>

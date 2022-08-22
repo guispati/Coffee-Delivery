@@ -12,6 +12,10 @@ export const ProductContainer = styled.div`
     img {
         width: 4rem;
     }
+
+    strong {
+        height: 100%;
+    }
 `;
 
 export const InfoContainer = styled.div`
@@ -67,13 +71,4 @@ export const DeleteIcon = styled.button`
         background: ${props => props.theme['base-hover']};
         cursor: pointer;
     }
-`;
-
-export const PriceContainer = styled.div`
-    height: 100%;
-    font-family: 'Roboto', sans-serif;
-    font-weight: 700;
-    font-size: 1rem;
-    text-align: right;
-    color: ${props => props.theme['base-text']};
 `;
