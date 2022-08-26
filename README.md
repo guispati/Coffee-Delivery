@@ -19,7 +19,7 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 ### 📋 Pré-requisitos
 
-Para clonar e rodar essa aplicação, será necessário o [Git](https://git-scm.com) e o [Node.js][nodejs] instalados no seu computador.
+Para clonar e rodar essa aplicação, será necessário o [Git](https://git-scm.com) e o [Node.js](https://nodejs.org/en/) instalados no seu computador.
 
 ### 🔧 Como usar
 
