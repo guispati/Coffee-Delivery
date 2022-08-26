@@ -22,7 +22,7 @@ export function Header() {
             <div>
                 <LocationContainer>
                     <MapPin size={22} weight="fill" />
-                    Porto Alegre, RS
+                    Londrina, PR
                 </LocationContainer>
                 <NavLink to="/checkout" title="Checkout">
                     <CartContainer quantity={totalCart}>

@@ -33,7 +33,7 @@ export function PurchaseOrder() {
             <section>
                 <OrderInfo>
                     <OrderInfoItem color="purple">
-                        <div><MapPin size={16} weight="fill" /></div>
+                        <div><MapPin size={16} weight="fill" color="#fff" /></div>
                         <div>
                             <span>Entrega em <strong>{state.street}, {state.number}</strong></span>
                             <span>{state.city} - {state.district}, {state.state}</span>
@@ -41,7 +41,7 @@ export function PurchaseOrder() {
                     </OrderInfoItem>
 
                     <OrderInfoItem color="yellow">
-                        <div><Timer size={16} weight="fill" /></div>
+                        <div><Timer size={16} weight="fill" color="#fff" /></div>
                         <div>
                             <span>Previsão de entrega</span>
                             <span><strong>20 min - 30 min</strong></span>
@@ -49,7 +49,7 @@ export function PurchaseOrder() {
                     </OrderInfoItem>
 
                     <OrderInfoItem color="yellowDark">
-                        <div><CurrencyDollar size={16} weight="fill" /></div>
+                        <div><CurrencyDollar size={16} weight="fill" color="#fff" /></div>
                         <div>
                             <span>Pagamento na entrega</span>
                             <span><strong>{paymentType}</strong></span>
